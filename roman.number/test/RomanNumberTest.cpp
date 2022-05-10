@@ -144,6 +144,100 @@ TEST(RomanOperations, test_plus)
    EXPECT_EQ(actual, expected);
 }
 
+TEST(RomanOperations, test_minus)
+{
+   RomanNumber actual("V");
+   RomanNumber expected("IV");
+
+   actual -= "I";
+   expected = "IV";
+   EXPECT_EQ(actual, expected);
+
+   actual = "VIII";
+   actual -= RomanNumber("II");
+   expected = "VI";
+   EXPECT_EQ(actual, expected);
+
+
+   actual   = RomanNumber("X") - RomanNumber("VIII");
+   expected = "II";
+   EXPECT_EQ(actual, expected);
+
+   RomanNumber n1 = RomanNumber("X");
+   RomanNumber n2 = RomanNumber("III");
+   actual         = n1 - n2;
+   expected       = "VII";
+   EXPECT_EQ(actual, expected);
+
+   RomanNumber n3 = RomanNumber("XI");
+   actual         = n3 - std::string("III");
+   expected       = "VIII";
+   EXPECT_EQ(actual, expected);
+}
+
+TEST(RomanOperations, test_multiply)
+{
+   RomanNumber actual("V");
+   RomanNumber expected("IV");
+
+   actual *= "I";
+   expected = "V";
+   EXPECT_EQ(actual, expected);
+
+   actual = "VIII";
+   actual *= RomanNumber("II");
+   expected = "XVI";
+   EXPECT_EQ(actual, expected);
+
+
+   actual   = RomanNumber("X") * RomanNumber("X");
+   expected = "C";
+   EXPECT_EQ(actual, expected);
+
+   RomanNumber n1 = RomanNumber("X");
+   RomanNumber n2 = RomanNumber("III");
+   actual         = n1 * n2;
+   expected       = "XXX";
+   EXPECT_EQ(actual, expected);
+
+   RomanNumber n3 = RomanNumber("X");
+   actual         = n3 * std::string("V");
+   expected       = "L";
+   EXPECT_EQ(actual, expected);
+}
+
+TEST(RomanOperations, test_division)
+{
+   RomanNumber actual("V");
+   RomanNumber expected("IV");
+
+   actual /= "I";
+   expected = "V";
+   EXPECT_EQ(actual, expected);
+
+   actual = "VIII";
+   actual /= RomanNumber("II");
+   expected = "IV";
+   EXPECT_EQ(actual, expected);
+
+
+   actual   = RomanNumber("X") / RomanNumber("X");
+   expected = "I";
+   EXPECT_EQ(actual, expected);
+
+   RomanNumber n1 = RomanNumber("X");
+   RomanNumber n2 = RomanNumber("III");
+   actual         = n1 / n2;
+   expected       = "III";
+   EXPECT_EQ(actual, expected);
+
+   RomanNumber n3 = RomanNumber("X");
+   actual         = n3 / std::string("V");
+   expected       = "II";
+   EXPECT_EQ(actual, expected);
+}
+
+
 TEST(RomanOperations, test_roman_range)
 {
    RomanNumber n("I");
@@ -159,7 +253,30 @@ TEST(RomanOperations, test_roman_range)
 TEST(RomanOperations, test_sum_overflow)
 {
    RomanNumber n("MMMCMXCIX");
-   EXPECT_ANY_THROW(n += "I");
+   EXPECT_THROW(n += "I", std::overflow_error);
+}
+
+TEST(RomanOperations, test_minus_underflow)
+{
+   RomanNumber n("V");
+   EXPECT_THROW(n -= "V", std::underflow_error); //0 underflow
+   EXPECT_THROW(n -= "X", std::underflow_error); //- underflow
+}
+
+
+TEST(RomanOperations, test_multiply_overflow)
+{
+   RomanNumber n("MCCCXXXIII"); //1333
+   EXPECT_NO_THROW(n * "III");
+   EXPECT_THROW(n *= "IV", std::overflow_error);
+
+   EXPECT_THROW((n * "III")+"I", std::overflow_error);
+}
+
+TEST(RomanOperations, test_divison_underflow)
+{
+   RomanNumber n("V");
+   EXPECT_THROW(n /= "VI", std::underflow_error);
 }
 
 
@@ -181,6 +298,12 @@ TEST(RomanOperations, test_boolean_exp)
    EXPECT_FALSE(RomanNumber("V") < RomanNumber("III"));
    EXPECT_FALSE(RomanNumber("V") < std::string("III"));
    EXPECT_FALSE(RomanNumber("V") < "V");
+
+
+   EXPECT_TRUE(RomanNumber("V") == RomanNumber("V"));
+   EXPECT_FALSE(RomanNumber("V") == std::string("III"));
+   EXPECT_TRUE(RomanNumber("VI") == "VI");
 }
+
 
 }   // namespace roman_number

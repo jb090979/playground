@@ -33,7 +33,7 @@ class RomanNumber
 
 
    template <typename T>
-   RomanNumber& operator=(T const& _other)
+   RomanNumber& operator=(const T& _other)
    {
       m_RomanNumber = RomanNumber(_other).m_RomanNumber;
       m_Number      = RomanNumber(_other).m_Number;
@@ -46,9 +46,6 @@ class RomanNumber
          The operator sum the stored RomanNumber with the given addend.
 
       @attention In case the summation overflows the std::overflow_error exception is thrown
-
-      @param addend
-      @return result
     */
 
    template <typename T>
@@ -63,6 +60,93 @@ class RomanNumber
          throw std::overflow_error("Addtition overflow occure!");
       }
       return RomanNumber(encode(tmp));
+   }
+
+   /**
+      @brief operator -
+
+         The operator sub the stored RomanNumber with the given value.
+
+      @attention In case the substraction underflows the std::underflow_error exception is thrown
+    */
+   template <typename T>
+   RomanNumber operator-(const T& _other)
+   {
+      uint32_t tmp = m_Number;
+
+      tmp -= RomanNumber(_other).m_Number;
+
+      if ((tmp > m_Number) || (tmp == 0))
+      {
+         throw std::underflow_error("Substraction underflow occure!");
+      }
+      return RomanNumber(encode(tmp));
+   }
+
+   template <typename T>
+   RomanNumber operator-=(const T& _other)
+   {
+      *this = *this - RomanNumber(_other);
+      return *this;
+   }
+
+
+   /**
+      @brief operator *
+
+         The operator sub the stored RomanNumber with the given value.
+
+      @attention In case the multiplication overflows then a std::overflow_error exception is thrown
+    */
+   template <typename T>
+   RomanNumber operator*(const T& _other)
+   {
+      uint32_t tmp = m_Number;
+
+      tmp *= RomanNumber(_other).m_Number;
+
+      if (tmp > s_MAX_VALUE)
+      {
+         throw std::overflow_error("Multiplication overflow occure!");
+      }
+      return RomanNumber(encode(tmp));
+   }
+
+   template <typename T>
+   RomanNumber operator*=(const T& _other)
+   {
+      *this = (*this) * RomanNumber(_other);
+      return *this;
+   }
+
+
+   /**
+      @brief operator /
+
+         The operator divide the stored RomanNumber with the given value.
+
+      @attention In case the divison underflowsn a std::underflow_error exception is thrown
+      @attention The remainder is ignored,m no rounding
+    */
+   template <typename T>
+   RomanNumber operator/(const T& _other)
+   {
+      RomanNumber o(_other);
+      uint32_t tmp = m_Number;
+      tmp /= o.m_Number;
+
+      if (tmp == UINT32_C(0))
+      {
+         throw std::underflow_error("Divison underflow occure!");
+      }
+      return RomanNumber(encode(tmp));
+   }
+
+   template <typename T>
+   RomanNumber operator/=(const T& _other)
+   {
+      *this = (*this) / RomanNumber(_other);
+      return *this;
    }
 
    template <typename T>
