@@ -1,3 +1,4 @@
+BasedOnStyle: LLVM
 ConstructorInitializerIndentWidth: '3'
 IndentWidth: '3'
 TabWidth: '3'
@@ -63,7 +64,7 @@ IndentWrappedFunctionNames: 'false'
 KeepEmptyLinesAtTheStartOfBlocks: 'true'
 Language: Cpp
 
-SortIncludes: 'false'
+SortIncludes: 'true'
 
 NamespaceIndentation: None
 
@@ -78,5 +79,5 @@ SpacesInAngles: 'false'
 SpacesInCStyleCastParentheses: 'false'
 SpacesInParentheses: 'false'
 SpacesInSquareBrackets: 'true'
-AccessModifierOffset: 0
+AccessModifierOffset: -3
 ContinuationIndentWidth: 3
