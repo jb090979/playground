@@ -98,9 +98,6 @@ class RomanNumber
    }
 
 
-
-
-
    operator uint32_t() const
    {
       return m_Number;

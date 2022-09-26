@@ -1,3 +1,7 @@
+build/
+.vscode
+
+
 # Prerequisites
 *.d
 
@@ -30,3 +34,4 @@
 *.exe
 *.out
 *.app
+/CMakeLists.txt.user
