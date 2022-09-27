@@ -118,7 +118,6 @@ void run()
    std::cout << "a4 size: " << a4.size << "\n";
 
    double x = 1;
-
    std::cout << "max of i: " << std::numeric_limits<decltype(x)>::max() << "\n";
 }
 

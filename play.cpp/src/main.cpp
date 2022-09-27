@@ -8,7 +8,7 @@
 int main()
 {
     std::cout << "Play Part:\n";
-    //play::run();
+    play::run();
 
     std::cout << "\n\nPlay Auto Part:\n";
     //play_auto::run();
@@ -19,9 +19,9 @@ int main()
 
 
     std::cout << "\n\nPlay Variadic Templates Part:\n";
-    play_variadic_templ::run();
+    //play_variadic_templ::run();
 
     std::cout << "\n\nPlay VBind Part:\n";
-    play_bind::run();
+    //play_bind::run();
     return 0;
 }
