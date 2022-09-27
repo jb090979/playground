@@ -2,6 +2,7 @@
 #include "play_auto.hpp"
 #include "play_decltype.hpp"
 #include "play_variadic_templ.hpp"
+#include "play_bind.hpp"
 #include <iostream>
 
 int main()
@@ -19,5 +20,8 @@ int main()
 
     std::cout << "\n\nPlay Variadic Templates Part:\n";
     play_variadic_templ::run();
+
+    std::cout << "\n\nPlay VBind Part:\n";
+    play_bind::run();
     return 0;
 }
