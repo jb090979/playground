@@ -19,6 +19,18 @@ function(add_module name)
                         -Xclang -emit-module-interface
                         -o ${PREBUILT_MODULE_PATH}/${name}.pcm
                     )
+            elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+            # using GCC
+				add_custom_target(${name}.pcm
+                    COMMAND
+                        ${CMAKE_CXX_COMPILER}
+                        -std=c++20
+                        -fmodules-ts
+                        -c
+                        ${CMAKE_CURRENT_SOURCE_DIR}/${ARGN}
+                        -o ${name}.pcm
+                    )
+				#g++ -std=c++20 -fmodules-ts -xc++-system-header iostream
             else()
                 message( FATAL_ERROR "Your compiler is not supported!" )
                 #  find setting for other compiler here
@@ -33,6 +45,16 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   add_module(math math1.icx)
   add_executable(${BINARY}_app ${SOURCES})
   add_dependencies(${BINARY}_app math.pcm)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  # using GCC
+  add_compile_options(-fmodules-ts)
+  add_module(math math1.cpp)
+  add_executable(main main.cpp)
+
+  add_custom_target(math math1.cpp)
+
+  target_link_options(main PUBLIC "LINKER:math.pcm")
+  add_dependencies(main math.pcm)
 
 else()
   message( FATAL_ERROR "Your compiler is not supported!" )
