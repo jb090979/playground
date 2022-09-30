@@ -49,12 +49,14 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   # using GCC
   add_compile_options(-fmodules-ts)
   add_module(math math1.cpp)
-  add_executable(main main.cpp)
+  add_module(coroutines coroutines.cpp)
+  add_executable(${BINARY}_app main.cpp)
 
   add_custom_target(math math1.cpp)
+  add_custom_target(coroutines coroutines.cpp)
 
-  target_link_options(main PUBLIC "LINKER:math.pcm")
-  add_dependencies(main math.pcm)
+  target_link_options(${BINARY}_app  PUBLIC "LINKER:math.pcm;coroutines.pcm")
+  add_dependencies(${BINARY}_app  math.pcm coroutines.pcm)
 
 else()
   message( FATAL_ERROR "Your compiler is not supported!" )
