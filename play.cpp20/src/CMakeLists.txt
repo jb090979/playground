@@ -24,7 +24,7 @@ function(add_module name)
 				add_custom_target(${name}.pcm
                     COMMAND
                         ${CMAKE_CXX_COMPILER}
-                        -std=c++20
+                        -std=c++2a
                         -fmodules-ts
                         -c
                         ${CMAKE_CURRENT_SOURCE_DIR}/${ARGN}
