@@ -54,12 +54,19 @@ void write_type3(T param)
    cout << "\n\n";
 }
 
+
+/**
+ * safe return x by copy or moving
+*/
 decltype(auto) f1()
 {
    uint32_t x = UINT32_C(0);
    return x;
 }
 
+/**
+ * dangerous --> return reference of x 
+*/
 decltype(auto) f2()
 {
    uint32_t x = UINT32_C(0);

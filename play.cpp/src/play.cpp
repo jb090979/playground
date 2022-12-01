@@ -7,13 +7,13 @@
 
 #include "play.hpp"
 #include <iostream>
-#include <stdint.h>
 #include <limits>
+#include <stdint.h>
 
 namespace play {
 
 //###### partiell Templates ######
-template <typename T=int32_t, uint32_t n=10>
+template <typename T = int32_t, uint32_t n = 10>
 class Array
 {
 public:
@@ -88,33 +88,33 @@ void run()
    std::cout << "Template Array\n";
 
    Array<uint32_t, 5> a1;
-   for (uint32_t i =0; i<5;i++)
+   for (uint32_t i = 0; i < 5; i++)
    {
-       a1[i] =i;
+      a1[ i ] = i;
    }
    std::cout << "a1 max: " << a1.max() << "\n";
    std::cout << "a1 min: " << a1.min() << "\n";
    std::cout << "a1 size: " << a1.size << "\n";
 
    Array<uint32_t*, 2> a2;
-   for (uint32_t i =0; i< 2;i++)
+   for (uint32_t i = 0; i < 2; i++)
    {
-       a2[i] = 0;
+      a2[ i ] = 0;
    }
-   //does not compile --> specialized array do not have min/max implemented
-   //std::cout << "a2 max: " << a2.max() << "\n";
-   //std::cout << "a2 min: " << a2.min() << "\n";
+   // does not compile --> specialized array do not have min/max implemented
+   // std::cout << "a2 max: " << a2.max() << "\n";
+   // std::cout << "a2 min: " << a2.min() << "\n";
    std::cout << "a2 size: " << a2.size << "\n";
 
-   //using default type/length
+   // using default type/length
    Array<> a3;
    std::cout << "a3 size: " << a3.size << "\n";
 
-   //using defaukt type/length
+   // using defaukt type/length
    Array<uint32_t*> a4;
-   //does not compile --> specialized array do not have min/max implemented
-   //std::cout << "a4 max: " << a4.max() << "\n";
-   //std::cout << "a4 min: " << a4.min() << "\n";
+   // does not compile --> specialized array do not have min/max implemented
+   // std::cout << "a4 max: " << a4.max() << "\n";
+   // std::cout << "a4 min: " << a4.min() << "\n";
    std::cout << "a4 size: " << a4.size << "\n";
 
    double x = 1;

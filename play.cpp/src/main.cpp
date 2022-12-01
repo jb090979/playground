@@ -11,17 +11,17 @@ int main()
     play::run();
 
     std::cout << "\n\nPlay Auto Part:\n";
-    //play_auto::run();
+    play_auto::run();
 
 
     std::cout << "\n\nPlay Decltype Part:\n";
-    //play_decltype::run();
+    play_decltype::run();
 
 
     std::cout << "\n\nPlay Variadic Templates Part:\n";
-    //play_variadic_templ::run();
+    play_variadic_templ::run();
 
     std::cout << "\n\nPlay VBind Part:\n";
-    //play_bind::run();
+    play_bind::run();
     return 0;
 }

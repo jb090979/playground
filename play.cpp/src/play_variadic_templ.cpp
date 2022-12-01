@@ -25,7 +25,7 @@ template<typename First, typename... Args>
 void print_types(const First& value, Args... args)
 {
     std::cout << "Type: " << write_type::get_type_name(value) << " | type count: " << sizeof...(args) <<"\n";
-    print_types(args...);
+    print_types(args...); 
 }
 
 void run()
@@ -36,7 +36,7 @@ void run()
    const uint32_t x = 27;
    const auto& xr = x;
 
-   print_types(1, 1.2f, 123455, 1.23445667890, x, xr);
+   print_types(UINT16_C(1), 1.2f, 123455, 1.23445667890, x, xr);
 
 }
 }   // namespace play_decltype

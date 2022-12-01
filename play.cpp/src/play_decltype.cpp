@@ -10,7 +10,7 @@
 #include <boost/type_index.hpp>
 #include <iostream>
 #include <queue>
-#include <stdint.h>
+#include <cstdint>
 
 namespace play_decltype {
 
@@ -34,7 +34,6 @@ void run()
 
    authAndAcess(d, 5) = 10;
 
-   //get type as compiler erro message
-   //authAndAcesswrite_type::TD<decltype(i)> iType;
+ 
 }
 }   // namespace play_decltype
