@@ -1,0 +1,43 @@
+{
+    "buildType":{
+        "default": "debug",
+        "choices":{
+            "debug": {
+                "short": "Debug",
+                "long": "No optimization, debug just the application",
+                "buildType": "Debug",
+                "settings": {
+                    "CODE_COVERAGE" : false,
+                    "UNIT_TESTS" : false
+                }
+            },
+            "test": {
+                "short": "Tests",
+                "long": "No optimization, debug info included",
+                "buildType": "Debug",
+                "settings": {
+                    "CODE_COVERAGE" : false,
+                    "UNIT_TESTS" : true
+                }
+            },
+            "coverage": {
+                "short": "Coverage",
+                "long": "Debug including coverage instrumentation",
+                "buildType": "Debug",
+                "settings": {
+                    "CODE_COVERAGE" : true,
+                    "UNIT_TESTS" : true
+                }
+            },
+            "release": {
+                "short": "Release",
+                "long": "Optimise für size --> exclude debug info",
+                "buildType": "Release",
+                "settings": {
+                    "CODE_COVERAGE" : false,
+                    "UNIT_TESTS" : false
+                }
+            }
+        }
+    }
+}

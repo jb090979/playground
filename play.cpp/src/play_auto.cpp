@@ -57,7 +57,7 @@ void write_type3(T param)
 
 /**
  * safe return x by copy or moving
-*/
+ */
 decltype(auto) f1()
 {
    uint32_t x = UINT32_C(0);
@@ -65,8 +65,8 @@ decltype(auto) f1()
 }
 
 /**
- * dangerous --> return reference of x 
-*/
+ * dangerous --> return reference of x
+ */
 decltype(auto) f2()
 {
    uint32_t x = UINT32_C(0);
@@ -85,11 +85,11 @@ auto f4()
    return (x);
 }
 
-//template to determine array size
-template<typename T, std::size_t N>
-constexpr std::size_t arraySize(T (&)[N])
+// template to determine array size
+template <typename T, std::size_t N>
+constexpr std::size_t arraySize(T (&)[ N ])
 {
-    return N;
+   return N;
 }
 
 void run()
@@ -141,13 +141,13 @@ void run()
 
    write_type3(ptrToName);
    std::cout << "Length of name (template) : " << arraySize(name) << "\n";
-   std::cout << "Length of name (old style): " << sizeof(name)/sizeof(name[0]) << "\n";
+   std::cout << "Length of name (old style): " << sizeof(name) / sizeof(name[ 0 ]) << "\n";
 
 
    std::cout << "####################################\n";
    std::cout << "auto types\n";
-   auto x2 = 27;
-   const auto cx2 = x2;
+   auto        x2  = 27;
+   const auto  cx2 = x2;
    const auto& rx2 = x2;
    write_type(x2);
    write_type(cx2);
@@ -164,19 +164,12 @@ void run()
    std::cout << "special case for auto types vs templates\n";
    auto n = 27;
    auto n2(27);
-   auto n3 = {27};
-   auto n4{27};
+   auto n3 = { 27 };
+   auto n4{ 27 };
    write_type(n);
    write_type(n2);
    write_type(n3);
    write_type(n4);
-
-
-
-
-
-
-
 }
 
 }   // namespace play_auto

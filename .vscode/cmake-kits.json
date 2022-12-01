@@ -1,0 +1,10 @@
+[
+    {
+        "name": "GNU",
+        "toolchainFile": "${workspaceFolder}/cmake/gnu.cmake"
+    },
+    {
+        "name": "Clang",
+        "toolchainFile": "${workspaceFolder}/cmake/clang.cmake"
+    }
+]

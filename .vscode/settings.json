@@ -1,0 +1,10 @@
+{
+    "cmake.buildDirectory": "${workspaceFolder}/build/${buildKit}/${variant:buildType}",
+    "cmake.debugConfig": {
+        "miDebuggerPath": "gdb",
+        "MIMode": "gdb",
+        "setupCommands": [
+            { "text": "-enable-pretty-printing", "description": "mandatory for STL debugging", "ignoreFailures": true }
+        ]
+    }
+}

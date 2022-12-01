@@ -15,17 +15,17 @@
 namespace play_variadic_templ {
 
 
-template<typename First>
+template <typename First>
 void print_types(const First& value)
 {
-    std::cout << "Type: " << write_type::get_type_name(value) << "\n";
+   std::cout << "Type: " << write_type::get_type_name(value) << "\n";
 }
 
-template<typename First, typename... Args>
+template <typename First, typename... Args>
 void print_types(const First& value, Args... args)
 {
-    std::cout << "Type: " << write_type::get_type_name(value) << " | type count: " << sizeof...(args) <<"\n";
-    print_types(args...); 
+   std::cout << "Type: " << write_type::get_type_name(value) << " | type count: " << sizeof...(args) << "\n";
+   print_types(args...);
 }
 
 void run()
@@ -33,10 +33,9 @@ void run()
    std::cout << "####################################\n";
 
    std::cout << "list types\n";
-   const uint32_t x = 27;
-   const auto& xr = x;
+   const uint32_t x  = 27;
+   const auto&    xr = x;
 
    print_types(UINT16_C(1), 1.2f, 123455, 1.23445667890, x, xr);
-
 }
-}   // namespace play_decltype
+}   // namespace play_variadic_templ

@@ -8,10 +8,10 @@
 #ifndef PLAYCPP_PLAY_DECLTYPES_HPP
 #define PLAYCPP_PLAY_DECLTYPES_HPP
 
+#include <iostream>
 #include <stdint.h>
 #include <string>
 #include <type_traits>
-#include <iostream>
 
 namespace play_decltype {
 

@@ -8,9 +8,9 @@
 #include "play_decltype.hpp"
 #include "write_type.hpp"
 #include <boost/type_index.hpp>
+#include <cstdint>
 #include <iostream>
 #include <queue>
-#include <cstdint>
 
 namespace play_decltype {
 
@@ -33,7 +33,5 @@ void run()
    std::deque<int> d;
 
    authAndAcess(d, 5) = 10;
-
- 
 }
 }   // namespace play_decltype

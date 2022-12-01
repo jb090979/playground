@@ -8,15 +8,15 @@
 #ifndef PLAYCPP_WRITE_TYPE_HPP
 #define PLAYCPP_WRITE_TYPE_HPP
 
+#include <boost/type_index.hpp>
+#include <iostream>
 #include <stdint.h>
 #include <string>
 #include <type_traits>
-#include <iostream>
-#include <boost/type_index.hpp>
 
 namespace write_type {
 
-template<typename T>
+template <typename T>
 class TD;
 
 template <typename T>
@@ -68,6 +68,6 @@ void write_type_param(T param)
    cout << "\n\n";
 }
 
-}
+}   // namespace write_type
 
 #endif

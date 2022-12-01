@@ -6,9 +6,9 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "RomanNumber.hpp"
-#include <string>
-#include <stdexcept>
 #include <bits/stdc++.h>
+#include <stdexcept>
+#include <string>
 
 namespace roman_number {
 
